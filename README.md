@@ -4,7 +4,7 @@ This is a simple module for interfacing with openocd via TCL api.
 
 ## Installation
 
-    pip install git+https://github.com/cdleonard/pyopenocd
+    pip install git+https://github.com/MikronMIK32/pyopenocd
 
 ## Usage
 
