@@ -64,3 +64,12 @@ class OpenOcd(OpenOcdTclRpc):
         count ... number of elements to read """
         data = self.run(f"capture \"read_memory {address:#0x} 32 1\"").split(" ")
         return int(data[0], base=16)
+
+    def load_image(self, filename, address, min_address = "", max_length = "", file_format = ""):
+        """Load image from file filename to target memory offset by address from its load address. 
+        The file format may optionally be specified (bin, ihex, elf, or s19). 
+        In addition the following arguments may be specified: 
+            min_addr - ignore data below min_addr (this is w.r.t. to the target’s load address + address) 
+            max_length - maximum number of bytes to load."""
+        filename = filename.replace("\\", "\\\\")
+        return self.run(f"load_image \"{filename}\" {address} {file_format} {min_address} {max_length}")
